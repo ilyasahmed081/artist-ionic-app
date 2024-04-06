@@ -14,6 +14,8 @@
   </ion-header>
 
   <ion-content class="ion-padding">
+    <!-- <ion-searchbar class="form-control" placeholder="Search anything you want..." (keyup)="onSearch($event)"></ion-searchbar> -->
+
     <ion-card *ngFor="let artist of artists">
       <ion-card-header>
         <ion-card-title>{{artist.name}}</ion-card-title>
