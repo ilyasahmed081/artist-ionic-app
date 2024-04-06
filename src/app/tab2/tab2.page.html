@@ -12,4 +12,19 @@
       <ion-title size="large">Artists</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-card *ngFor="let artist of artists">
+      <ion-card-header>
+        <ion-card-title>{{artist.name}}</ion-card-title>
+        <ion-card-subtitle>{{artist.artwork_type}}</ion-card-subtitle>
+        <ion-card-subtitle>{{artist.contact_info}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{artist.special_notes ? artist.special_notes : 'NA'}}
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
 </ion-content>
