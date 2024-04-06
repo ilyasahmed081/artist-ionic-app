@@ -1,0 +1,7 @@
+{
+  "name": "artist-ionic-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
