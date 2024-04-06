@@ -27,12 +27,13 @@ export class Tab2Page implements OnInit {
   }
 
   /**
-   * gettign all artists from api service
+   * getting all artists from api service
    */
   getAllArtists() {
     this.service.get(this.endpoint).subscribe(res => {
       let nonFeaturedArtists: IArtist[] = [];
 
+      // filtering non-featured artists 
       res.forEach((a: IArtist) => {
         if (a.is_featured_artist === 0) {
           nonFeaturedArtists.push(a);
