@@ -1,7 +1,8 @@
 import { NgFor } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent} from '@ionic/angular/standalone';
+import { FormsModule } from '@angular/forms';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar } from '@ionic/angular/standalone';
 import { IArtist } from 'src/interfaces/artists';
 import { ArtistService } from 'src/services/artist/artist.service';
 
@@ -11,12 +12,15 @@ import { ArtistService } from 'src/services/artist/artist.service';
   styleUrls: ['tab2.page.scss'],
   standalone: true,
   providers: [ArtistService],
-  imports: [HttpClientModule, NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent]
+  imports: [FormsModule, IonSearchbar, HttpClientModule, NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent]
 })
 export class Tab2Page implements OnInit {
 
   endpoint: string = 'ArtGalley';
   artists: IArtist[] = [];
+
+  searchTerm: string = '';
+  filteredArtists: IArtist[] = [];
 
   constructor(
     private service: ArtistService
@@ -41,7 +45,21 @@ export class Tab2Page implements OnInit {
       });
 
       this.artists = nonFeaturedArtists;
+      this.filteredArtists = this.artists;
     })
+  }
+
+  /**
+   * search artist from the list of artists
+   */
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      this.filteredArtists = this.artists.filter(artist =>
+        artist.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredArtists = this.artists; // Reset to all artists if search term is empty
+    }
   }
 
 }
