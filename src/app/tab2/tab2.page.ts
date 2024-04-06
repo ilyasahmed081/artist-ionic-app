@@ -1,42 +1,47 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent} from '@ionic/angular/standalone';
 import { IArtist } from 'src/interfaces/artists';
+import { ArtistService } from 'src/services/artist/artist.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent]
+  providers: [ArtistService],
+  imports: [HttpClientModule, NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent]
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
 
-  artists: IArtist[] = [
-    {
-      "artist_id": 4,
-      "name": "Terry",
-      "dob": "1982-10-29T14:00:00.000Z",
-      "gender": "Female",
-      "artwork_type": "photograph",
-      "contact_info": "terry@photography.net",
-      "exhibition_date": "2024-06-19T14:00:00.000Z",
-      "special_notes": "Award-winning urban photographer",
-      "is_featured_artist": 0
-    },
-    {
-      "artist_id": 92,
-      "name": "test_ee",
-      "dob": "2024-04-06T13:00:00.000Z",
-      "gender": "Unspecified",
-      "artwork_type": "video art",
-      "contact_info": "+9213123123",
-      "exhibition_date": "2024-04-06T13:00:00.000Z",
-      "special_notes": "",
-      "is_featured_artist": 0
-    },
-  ];
+  endpoint: string = 'ArtGalley';
+  artists: IArtist[] = [];
 
-  constructor() {}
+  constructor(
+    private service: ArtistService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllArtists();
+  }
+
+  /**
+   * getting all artists from api service
+   */
+  getAllArtists() {
+    this.service.get(this.endpoint).subscribe(res => {
+      let nonFeaturedArtists: IArtist[] = [];
+
+      // filtering non-featured artists 
+      res.forEach((a: IArtist) => {
+        if (a.is_featured_artist === 0) {
+          nonFeaturedArtists.push(a);
+        }
+      });
+
+      this.artists = nonFeaturedArtists;
+    })
+  }
 
 }

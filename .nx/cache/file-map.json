@@ -129,24 +129,8 @@
         "hash": "18257155905323275827"
       },
       {
-        "file": "src/app/explore-container/explore-container.component.html",
-        "hash": "11276277544007458628"
-      },
-      {
-        "file": "src/app/explore-container/explore-container.component.scss",
-        "hash": "14250411118003398491"
-      },
-      {
-        "file": "src/app/explore-container/explore-container.component.spec.ts",
-        "hash": "13935599920762330903"
-      },
-      {
-        "file": "src/app/explore-container/explore-container.component.ts",
-        "hash": "9627812680309577193"
-      },
-      {
         "file": "src/app/tab1/tab1.page.html",
-        "hash": "13207509910740934786"
+        "hash": "15464819875142439908"
       },
       {
         "file": "src/app/tab1/tab1.page.scss",
@@ -158,11 +142,11 @@
       },
       {
         "file": "src/app/tab1/tab1.page.ts",
-        "hash": "16961603846796942878"
+        "hash": "5898696979708714778"
       },
       {
         "file": "src/app/tab2/tab2.page.html",
-        "hash": "13340392613393970086"
+        "hash": "414516857595266424"
       },
       {
         "file": "src/app/tab2/tab2.page.scss",
@@ -174,11 +158,11 @@
       },
       {
         "file": "src/app/tab2/tab2.page.ts",
-        "hash": "10239354924764746526"
+        "hash": "3497752205390087881"
       },
       {
         "file": "src/app/tab3/tab3.page.html",
-        "hash": "1640442279298071434"
+        "hash": "7697363066113723000"
       },
       {
         "file": "src/app/tab3/tab3.page.scss",
@@ -190,11 +174,11 @@
       },
       {
         "file": "src/app/tab3/tab3.page.ts",
-        "hash": "5581557519451467703"
+        "hash": "15027181087140554205"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
-        "hash": "10373639428334637925"
+        "hash": "7576387403361031911"
       },
       {
         "file": "src/app/tabs/tabs.page.scss",
@@ -237,12 +221,24 @@
         "hash": "5962093970713772175"
       },
       {
+        "file": "src/interfaces/artists.ts",
+        "hash": "2161061835812990366"
+      },
+      {
         "file": "src/main.ts",
         "hash": "282009733975285211"
       },
       {
         "file": "src/polyfills.ts",
         "hash": "11812151144158597559"
+      },
+      {
+        "file": "src/services/artist/artist.service.spec.ts",
+        "hash": "12286449071594433036"
+      },
+      {
+        "file": "src/services/artist/artist.service.ts",
+        "hash": "7979422576743369980"
       },
       {
         "file": "src/test.ts",
