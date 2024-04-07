@@ -14,9 +14,9 @@
   </ion-header>
 
   <ion-content class="ion-padding">
-    <!-- <ion-searchbar class="form-control" placeholder="Search anything you want..." (keyup)="onSearch($event)"></ion-searchbar> -->
+    <ion-searchbar placeholder="Search artist" [(ngModel)]="searchTerm" (keyup)="onSearch()"></ion-searchbar>
 
-    <ion-card *ngFor="let artist of artists">
+    <ion-card *ngFor="let artist of filteredArtists">
       <ion-card-header>
         <ion-card-title>{{artist.name}}</ion-card-title>
         <ion-card-subtitle>{{artist.artwork_type}}</ion-card-subtitle>
@@ -26,6 +26,9 @@
       <ion-card-content>
         {{artist.special_notes ? artist.special_notes : 'NA'}}
       </ion-card-content>
+
+      <ion-button class="ion-margin" (click)="onEdit(artist)">Edit</ion-button>
+      <ion-button color="danger" (click)="onDelete(artist)">Delete</ion-button>
     </ion-card>
   </ion-content>
   

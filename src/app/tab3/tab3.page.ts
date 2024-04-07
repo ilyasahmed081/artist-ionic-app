@@ -1,7 +1,9 @@
 import { NgFor } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar } from '@ionic/angular/standalone';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar, IonButton } from '@ionic/angular/standalone';
 import { IArtist } from 'src/interfaces/artists';
 import { ArtistService } from 'src/services/artist/artist.service';
 
@@ -11,15 +13,21 @@ import { ArtistService } from 'src/services/artist/artist.service';
   styleUrls: ['tab3.page.scss'],
   standalone: true,
   providers: [ArtistService],
-  imports: [HttpClientModule, NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar],
+  imports: [IonButton, FormsModule, HttpClientModule, NgFor, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar],
 })
 export class Tab3Page {
 
   endpoint: string = 'ArtGalley';
   artists: IArtist[] = [];
+  toast: boolean = false;
+  toastMsg: string = "";
+
+  searchTerm: string = '';
+  filteredArtists: IArtist[] = [];
 
   constructor(
-    private service: ArtistService
+    private service: ArtistService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +49,41 @@ export class Tab3Page {
       });
 
       this.artists = featuredArtists;
+      this.filteredArtists = this.artists;
     })
+  }
+
+  /**
+   * search artist from the list of artists
+   */
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      this.filteredArtists = this.artists.filter(artist =>
+        artist.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredArtists = this.artists; // Reset to all artists if search term is empty
+    }
+  }
+
+  /**
+   * Passing data of Featured artist to tab 4 to populate in the form to update
+   * @param artist 
+   */
+  onEdit(artist: IArtist) {
+    this.router.navigate(['/tabs/tab4'], { state: { data: artist } });
+  }
+
+  /**
+   * Deelte Featured Artist from server
+   * @param artist 
+   */
+  onDelete(artist: IArtist) {
+    this.service.delete(this.endpoint, artist).subscribe(res => {
+      this.getAllFeaturedArtists();
+    }, error => {
+      this.toast = true;
+      this.toastMsg = error;
+    });
   }
 }

@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add Artist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input formControlName="name" type="text" label="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="dob" type="date" label="DOB"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <select formControlName="gender">
+        <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
+      </select>
+    </ion-item>
+
+    <ion-item>
+      <select formControlName="artwork_type">
+        <option *ngFor="let option of artworkTypeOptions" [value]="option">{{ option }}</option>
+      </select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="contact_info" type="text" label="Contact Info"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="exhibition_date" type="date" label="Exhibition Date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea formControlName="special_notes" label="Special Notes"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox formControlName="is_featured_artist">Featured Artist</ion-checkbox>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Submit</ion-button>
+  </form>
+
+  <ion-toast [isOpen]="toast" [message]="toastMsg" [duration]="500"></ion-toast>
+</ion-content>
