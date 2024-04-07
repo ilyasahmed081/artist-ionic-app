@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add Artist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input [value]="artistFormModel.name" (input)="onInputChange('name', $event)" type="text" name="name" label="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [value]="artistFormModel.dob" (input)="onInputChange('dob', $event)" type="date" name="dob" label="DOB"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <select (input)="onInputChange('gender', $event)" name="gender">
+        <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
+      </select>
+    </ion-item>
+
+    <ion-item>
+      <select (input)="onInputChange('artworkType', $event)" name="artworkType">
+        <option *ngFor="let option of artworkTypeOptions" [value]="option">{{ option }}</option>
+      </select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [value]="artistFormModel.contactInfo" (input)="onInputChange('contactInfo', $event)" type="text" name="contactInfo" label="Contact Info"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [value]="artistFormModel.exhibitionDate" (input)="onInputChange('exhibitionDate', $event)" type="date" name="exhibitionDate" label="Exhibition Date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [value]="artistFormModel.specialNotes" (input)="onInputChange('specialNotes', $event)" name="specialNotes" label="Special Notes"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox (ionChange)="onFeaturedChange($event)" name="featuredArtist">Featured Artist</ion-checkbox>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Submit</ion-button>
+  </form>
+</ion-content>
