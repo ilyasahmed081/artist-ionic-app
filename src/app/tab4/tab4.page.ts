@@ -76,7 +76,7 @@ export class Tab4Page implements OnInit {
    * Else? Update Artist Data
    */
   onSubmit(): void {
-    if (this.artistForm.valid && !this.editData.artist_id) {
+    if (this.artistForm.valid && !this.editData) {
       this.service.post(this.endpoint, this.artistForm.value).subscribe(res => {
         this.router.navigate(['/tabs/tab2']);
       }, error => {
