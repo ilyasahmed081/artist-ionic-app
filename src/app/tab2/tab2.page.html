@@ -26,6 +26,9 @@
       <ion-card-content>
         {{artist.special_notes ? artist.special_notes : 'NA'}}
       </ion-card-content>
+
+      <ion-button class="ion-margin" (click)="onEdit(artist)">Edit</ion-button>
+      <ion-button color="danger" (click)="onDelete(artist)">Delete</ion-button>
     </ion-card>
   </ion-content>
   

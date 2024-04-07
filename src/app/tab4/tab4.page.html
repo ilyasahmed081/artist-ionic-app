@@ -5,43 +5,45 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="artistForm" (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-input [value]="artistFormModel.name" (input)="onInputChange('name', $event)" type="text" name="name" label="Name"></ion-input>
+      <ion-input formControlName="name" type="text" label="Name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input [value]="artistFormModel.dob" (input)="onInputChange('dob', $event)" type="date" name="dob" label="DOB"></ion-input>
+      <ion-input formControlName="dob" type="date" label="DOB"></ion-input>
     </ion-item>
 
     <ion-item>
-      <select (input)="onInputChange('gender', $event)" name="gender">
+      <select formControlName="gender">
         <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
       </select>
     </ion-item>
 
     <ion-item>
-      <select (input)="onInputChange('artworkType', $event)" name="artworkType">
+      <select formControlName="artwork_type">
         <option *ngFor="let option of artworkTypeOptions" [value]="option">{{ option }}</option>
       </select>
     </ion-item>
 
     <ion-item>
-      <ion-input [value]="artistFormModel.contactInfo" (input)="onInputChange('contactInfo', $event)" type="text" name="contactInfo" label="Contact Info"></ion-input>
+      <ion-input formControlName="contact_info" type="text" label="Contact Info"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input [value]="artistFormModel.exhibitionDate" (input)="onInputChange('exhibitionDate', $event)" type="date" name="exhibitionDate" label="Exhibition Date"></ion-input>
+      <ion-input formControlName="exhibition_date" type="date" label="Exhibition Date"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-textarea [value]="artistFormModel.specialNotes" (input)="onInputChange('specialNotes', $event)" name="specialNotes" label="Special Notes"></ion-textarea>
+      <ion-textarea formControlName="special_notes" label="Special Notes"></ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-checkbox (ionChange)="onFeaturedChange($event)" name="featuredArtist">Featured Artist</ion-checkbox>
+      <ion-checkbox formControlName="is_featured_artist">Featured Artist</ion-checkbox>
     </ion-item>
 
     <ion-button type="submit" expand="block">Submit</ion-button>
   </form>
+
+  <ion-toast [isOpen]="toast" [message]="toastMsg" [duration]="500"></ion-toast>
 </ion-content>

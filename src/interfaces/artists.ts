@@ -1,5 +1,5 @@
 export interface IArtist {
-    artist_id: number;
+    artist_id: string;
     name: string;
     dob: string;
     gender: string;

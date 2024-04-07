@@ -39,15 +39,15 @@ export class ArtistService {
 
   // PUT request
   put(endpoint: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${endpoint}`, data, { ...this.headers })
+    return this.http.put(`${this.apiUrl}/${endpoint}/${data.name}`, data, { ...this.headers })
       .pipe(
         catchError(this.handleError)
       );
   }
 
   // DELETE request
-  delete(endpoint: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${endpoint}`)
+  delete(endpoint: string, data: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${endpoint}/${data.name}`)
       .pipe(
         catchError(this.handleError)
       );
