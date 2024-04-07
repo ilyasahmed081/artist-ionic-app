@@ -66,10 +66,18 @@ export class Tab2Page implements OnInit {
     }
   }
 
+  /**
+   * Passing data of artist to tab 4 to populate in the form to update
+   * @param artist 
+   */
   onEdit(artist: IArtist) {
     this.router.navigate(['/tabs/tab4'], { state: { data: artist } });
   }
 
+  /**
+   * Deelte Artist from server
+   * @param artist 
+   */
   onDelete(artist: IArtist) {
     this.service.delete(this.endpoint, artist).subscribe(res => {
       this.getAllArtists();

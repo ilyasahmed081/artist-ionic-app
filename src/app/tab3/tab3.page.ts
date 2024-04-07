@@ -66,10 +66,18 @@ export class Tab3Page {
     }
   }
 
+  /**
+   * Passing data of Featured artist to tab 4 to populate in the form to update
+   * @param artist 
+   */
   onEdit(artist: IArtist) {
     this.router.navigate(['/tabs/tab4'], { state: { data: artist } });
   }
 
+  /**
+   * Deelte Featured Artist from server
+   * @param artist 
+   */
   onDelete(artist: IArtist) {
     this.service.delete(this.endpoint, artist).subscribe(res => {
       this.getAllFeaturedArtists();
