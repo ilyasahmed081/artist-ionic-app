@@ -146,7 +146,7 @@
       },
       {
         "file": "src/app/tab2/tab2.page.html",
-        "hash": "414516857595266424"
+        "hash": "13740372039225915415"
       },
       {
         "file": "src/app/tab2/tab2.page.scss",
@@ -158,11 +158,11 @@
       },
       {
         "file": "src/app/tab2/tab2.page.ts",
-        "hash": "3497752205390087881"
+        "hash": "1665924915079907149"
       },
       {
         "file": "src/app/tab3/tab3.page.html",
-        "hash": "7697363066113723000"
+        "hash": "16990212928512464987"
       },
       {
         "file": "src/app/tab3/tab3.page.scss",
@@ -174,7 +174,7 @@
       },
       {
         "file": "src/app/tab3/tab3.page.ts",
-        "hash": "15027181087140554205"
+        "hash": "12134646731566291498"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
@@ -238,7 +238,7 @@
       },
       {
         "file": "src/services/artist/artist.service.ts",
-        "hash": "7979422576743369980"
+        "hash": "5474888965877729358"
       },
       {
         "file": "src/test.ts",
